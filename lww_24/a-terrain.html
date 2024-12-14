@@ -43,6 +43,7 @@
         
             <a-assset-item id="mXwing" src="./assets/xwing.glb"></a-assset-item>
             <a-assset-item id="mATAT" src="./assets/atat.glb"></a-assset-item>
+            <a-assset-item id="mR2" src="./assets/r2d2.glb"></a-assset-item>
             
             <img crossorigin="anonymous" id="i1" src="./assets/1.png"></img>
             <img crossorigin="anonymous" id="i2" src="./assets/2.png"></img>
@@ -157,7 +158,7 @@
         <!-- terrain-forest-generator -->
 
         <!-- Quest system -->
-        <a-entity quest-manager="questFile: LukeQuests.txt"></a-entity>
+        <!-- <a-entity quest-manager="questFile: LukeQuests.txt"></a-entity> -->
         <a-entity       id="flight"
                         gltf-model="#mXwing"
                         scale="32 32 32" 
@@ -198,38 +199,37 @@
 
         <!-- mobs! -->
         <a-gltf-model   id="monty"
-                        src="#mArm" scale="3 3 3"
+                        src="#mR2" scale="3 3 3"
                         material="shader:flat;"
                         color="#B0B" 
                         position="100 12 -18"
-                        ai-locomotion="height:0.6;speed:0.5;
+                        ai-locomotion="height:1.2;speed:0.5;
                         turnSpeed:0.6;
                         aidrive:true;flee:false;target:#player"
                         >
         </a-gltf-model>
         <!-- look-at="targetID:#player; rSpeed:0.8" -->
         <a-gltf-model   id="baby"
-                        src="#mArm" scale="1 1 1" 
+                        src="#mR2" scale="1 1 1" 
                         color="#B0B" 
                         position="100 12 -6"
-                        ai-locomotion="height:0.3;speed:0.3;aidrive:true;flee:false;target:#monty"
+                        ai-locomotion="height:0.6;speed:0.3;aidrive:true;flee:false;target:#monty"
                         >
         </a-gltf-model>
         <a-gltf-model    id="baby2"
-                        src="#mArm" scale="0.6 0.6 0.6" 
+                        src="#mR2" scale="0.6 0.6 0.6" 
                         color="#B0B" 
                         position="-6 12 6"
-                        ai-locomotion="height:0.1;speed:0.45;aidrive:true;
+                        ai-locomotion="height:0.2;speed:0.45;aidrive:true;
                         flee:false;target:#player;turnSpeed:0.3;"
-                        
                         >
         </a-gltf-model>
         <!-- look-at="targetID:#player; rSpeed:0.8;flee:true;" -->
 
         <a-obj-model    id="sniffler"
-                        src="#mSni" scale="8 8 8" 
-                        color="#EEB" 
-                        position="122 8 -199"
+                        src="#mSni" scale="16 16 16" 
+                        color="#FFF" 
+                        position="122 32 -899"
                         ai-locomotion="height:8;speed:0.3;aidrive:true;flee:false;target:#player"
                         >
         </a-obj-model>
@@ -272,8 +272,8 @@
     <script src="HUD_menu.js"></script>
     <!-- Locomotion of player. -->
     <script src='a-loco.js'></script>
-    <script src="q-markers.js"></script>
-    <script src="qman.js"></script>
+    <!-- <script src="q-markers.js"></script> -->
+    <!-- <script src="qman.js"></script> -->
     <!-- <script src="n_urizen.js"></script> -->
 
 </body>

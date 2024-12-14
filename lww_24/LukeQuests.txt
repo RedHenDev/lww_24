@@ -1,6 +1,6 @@
 [Quest]
 id=1
-type=location
+type=messageBoard
 x=0
 y=6
 z=3

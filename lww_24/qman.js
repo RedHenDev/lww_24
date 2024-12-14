@@ -99,11 +99,11 @@ AFRAME.registerComponent('quest-manager', {
         }
         
         // If no prerequisite, quest is ready
-        if (quest.prerequisite === -1) {
+        if (quest.prerequisite == -1) {
             return true;
         }
         
-        // Convert prerequisite to string for Map lookup
+        // Convert prerequisite to string for Map lookup.
         const prereq = this.quests.get(quest.prerequisite.toString());
         return prereq && prereq.completed;
     },
@@ -111,7 +111,7 @@ AFRAME.registerComponent('quest-manager', {
     getActiveQuests: function() {
         const active = new Map();
         for (const [id, quest] of this.quests) {
-            // Convert id to string when getting from Map
+            // Convert id to string when getting from Map.
             if (!quest.completed && this.isQuestReady(id.toString())) {
                 active.set(id, quest);
             }
@@ -130,7 +130,7 @@ AFRAME.registerComponent('quest-manager', {
             this.el.emit('quest-completed', { questId: questId });
             console.log(`Completed quest ${questId}: ${quest.message}`);
             
-            // Add small delay to ensure quest state is updated before refreshing markers
+            // Add small delay to ensure quest state is updated before refreshing markers.
             setTimeout(() => {
                 const qms = document.querySelector('[quest-markers]');
                 if (qms && qms.components['quest-markers']) {
