@@ -82,38 +82,20 @@ AFRAME.registerComponent('generate-hud', {
     });
 
     let button4;
-    if (worldSeed!=1){
+    
     button4 = createButton('b4', '-1 -0.6 0', 'snow', (event) => {
       console.log('Button state:', event.detail.state);
       const en = document.querySelector('#klaus').components['snow-system'];
       en.data.snowing = event.detail.state;
     });
-    }
-
-    // External, non-Hud button.
-    const button5 = createButton('b5', '0 0 0', 'snow', (event) => {
-      console.log('Button state:', event.detail.state);
-      const en = document.querySelector('#klaus').components['snow-system'];
-      en.data.snowing = event.detail.state;
-      // Remove button once activated. It worked!
-      sceneEl.remove(button5);
-    });
-    // Place button out in world, not on Hud. Note lower we append
-    // to scene and not Hud.
-    //button5.setAttribute('position', "440 12 -365");
-    button5.setAttribute('position', "94 6 -1044");
-    button5.setAttribute('buttonText', 'position', '0 0 0.01');
-    button5.setAttribute('scale', "12 12 12");
-    button5.setAttribute('look-at','targetID:#player;rSpeed:1');
+    
 
     // Add buttons to panel.
     panel.appendChild(button1);
     panel.appendChild(button2);
     panel.appendChild(button3);
-    if (worldSeed!=1){
     panel.appendChild(button4);
-    }
-    sceneEl.appendChild(button5);
+
 
     // Add panel to HUD.
     hudEntity.appendChild(panel);

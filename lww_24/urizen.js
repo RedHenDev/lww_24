@@ -1,6 +1,6 @@
 // Procedural terrain generation.
 //let ws=prompt('Type a word or phrase to generate\n a new terrain.');
-const ws=1;
+const ws='Luke';
 const worldSeed = getSeed(ws);
 //let ws='ihoooo';
 
@@ -181,18 +181,18 @@ function getTerrainHeight(x, z) {
 
 function getTerrainColor(height) {
 
-    if (worldSeed!=1){
-    // Grassy height-based colouring.
-    if (height < -11.5) return '#002222';
-    if (height < 0) return '#002200';     
-    if (height < 5) return '#002900';     
-    if (height < 10) return '#003000';    
-    if (height < 30) return '#003800';    
-    if (height < 50) return '#004400';    
-    if (height < 70) return '#6B776B';    
-    return '#FFFFFF';
-    }
-    else if (worldSeed===1){
+    
+    // // Grassy height-based colouring.
+    // if (height < -11.5) return '#002222';
+    // if (height < 0) return '#002200';     
+    // if (height < 5) return '#002900';     
+    // if (height < 10) return '#003000';    
+    // if (height < 30) return '#003800';    
+    // if (height < 50) return '#004400';    
+    // if (height < 70) return '#6B776B';    
+    // return '#FFFFFF';
+    
+    
     // Snowy appearance.
     if (height < -11.5) return '#002222';
     if (height < 0) return '#AAA';     // Deep water
@@ -202,7 +202,7 @@ function getTerrainColor(height) {
     if (height < 50) return '#EEE';    // Forest
     if (height < 70) return '#FFFFFF';    // Mountain
     return '#FFFFFF';                     // Snow peaks
-    }
+    
 }
 
 // Terrain generator component.
