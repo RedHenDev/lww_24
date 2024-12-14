@@ -157,13 +157,19 @@
         <!-- terrain-forest-generator -->
 
         <!-- Quest system -->
-        <a-entity quest-manager="questFile: quests.txt"></a-entity>
+        <a-entity quest-manager="questFile: LukeQuests.txt"></a-entity>
         <a-entity       id="flight"
                         gltf-model="#mXwing"
                         scale="32 32 32" 
                         color="#0B1" 
                         position="0 32 -100"
-                        rotation="12 0 0"
+                        rotation="-24 0 0"
+                        animation="property: position;
+                        dir: alternate;
+                        dur: 4000;
+                        easing: easeInOutSine;
+                        loop: true;
+                        to: 0 42 -100" >
                         >
         </a-entity>
         <a-entity  
@@ -186,9 +192,9 @@
         <!-- Here is where we load in obj models -->
 
         <!-- Experimental nonsense. Hi mum! -->
-        <script defer src="glow-spheres.js"></script>
+        <!-- <script defer src="glow-spheres.js"></script>
         <a-entity   sphere-generator="interval: 500; maxSpheres: 32" 
-                    position="440 100 -400"></a-entity>
+                    position="440 100 -400"></a-entity> -->
 
         <!-- mobs! -->
         <a-gltf-model   id="monty"
@@ -221,17 +227,16 @@
         <!-- look-at="targetID:#player; rSpeed:0.8;flee:true;" -->
 
         <a-obj-model    id="sniffler"
-                        src="#mSni" scale="4 4 4" 
+                        src="#mSni" scale="8 8 8" 
                         color="#EEB" 
-                        position="12 6 -19"
-                        material="src: #i1"
-                        ai-locomotion="height:6;speed:0.3;aidrive:true;flee:false;target:#baby2"
+                        position="122 8 -199"
+                        ai-locomotion="height:8;speed:0.3;aidrive:true;flee:false;target:#player"
                         >
         </a-obj-model>
 
-        <a-entity   sphere-generator="interval: 50; maxSpheres: 320; 
+        <!-- <a-entity   sphere-generator="interval: 50; maxSpheres: 320; 
                                         maxRadius: 0.4" 
-                    position="88 0 64"></a-entity>
+                    position="88 0 64"></a-entity> -->
 
         <a-plane    src="#i1" 
                     position="164 24 66" 
@@ -247,9 +252,9 @@
 
         <a-plane    
                     src="#i3" 
-                    position="164 24 -66" 
-                    scale="40 40 0"
-                    rotation="0 90 0"
+                    position="164 84 -66" 
+                    scale="40 120 0"
+                    rotation="0 120 0"
                     material="side: double"></a-plane>
         
         <a-plane    src="#i4" 

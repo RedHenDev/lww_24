@@ -1,0 +1,35 @@
+[Quest]
+id=1
+type=location
+x=0
+y=6
+z=3
+itemType=crystal
+message=Welcome, Luke \nto your Winter World.\nFind the next\nclue to learn the \nsecret of the Jedi Light.
+prerequisite=-1
+visible=true
+completed=false
+
+[Quest]
+id=2
+type=messageBoard
+x=0
+y=6
+z=12
+itemType=none
+message=Message 2.
+prerequisite=1
+visible=false
+completed=false
+
+[Quest]
+id=3
+type=messageBoard
+x=0
+y=6
+z=18
+itemType=key
+message=Conclusion.
+prerequisite=2
+visible=false
+completed=false
