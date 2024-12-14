@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amèlie's Christmas Land</title>
+
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+
+    <!-- For terrain generation using procedural noise.-->
+    <script src="urizen.js"></script>
+
+    <!-- For scripts wanting to add a look-at behaviour. -->
+    <script src="look_at.js"></script>
+    
+    <!-- Fields of grass... -->
+    <script src="grass_sys.js"></script>
+    <script src="grass_gen.js"></script>
+    <!-- <script src="plant_gen.js"></script> -->
+    <script src="tree_gen.js"></script>
+    <!-- <script src="plant_sys.js"></script> -->
+    <script src="tree_sys.js"></script>
+    <script src="toad_sys.js"></script>
+    <script src="toad_gen.js"></script>
+    <!-- <script src="a-trees.js"></script> -->
+
+    <script src="ai_sys.js"></script>
+
+    <!-- Snow system. -->
+    <script src="snow_sys.js"></script>
+
+    <!-- <script src="terrain-features.js"></script> -->
+    
+</head>
+<body>
+    <!-- fog="type: linear; color: #0AA; far:320;" -->
+    <a-scene fog="type: linear; color: #0AA; far:512;">
+
+    <script src="thalassa.js"></script>
+
+        <!-- preloading assets -->
+        <a-assets>
+        <!-- Preload our assets, such as the Monster Truck :) -->
+            <!-- <a-asset-item id="grave-digger" src="graveDigger.obj"></a-asset-item> -->
+        
+            <a-asset-item id="great-hall" src="great_hall.glb"></a-asset-item>
+            <a-assset-item id="mQh" src="./assets/queenHead.obj"></a-assset-item>
+            <a-assset-item id="snowQstatue" src="./assets/queen.glb"></a-assset-item>
+            <a-asset-item id="ent" src="tree.obj"></a-asset-item>
+            <a-asset-item id="gbox" src="./assets/gift.obj"></a-asset-item>
+            <img crossorigin="anonymous" id="iQueen" src="./assets/snowQueen.png"></img>
+            <img crossorigin="anonymous" id="iQcode" src="./assets/aww_24.png"></img>
+
+            <!-- <a-asset-item id="iArm" src="./assets/armadillo.png"></a-asset-item> -->
+            <a-asset-item id="mArm" src="./assets/snowdillo.gltf"></a-asset-item>
+            <a-asset-item id="mSni" src="./assets/sniffler2.obj"></a-asset-item>
+
+             </a-assets>
+
+        <!-- <script src="auto_gallery.js"></script> -->
+
+        <!-- Player with terrain locomotion system. -->
+        <a-entity id="player" position="0 25 0" terrain-movement="height: 4.6">
+            <a-camera id="cam" wasd-controls="enabled: false" look-controls>
+                <!-- micro HUD Interface -->
+                <a-entity id="micro-hud">
+                    <!-- Background panel. -->
+                    <a-plane    position="0 -0.6 -3"
+                                width="1.2" height="0.4"
+                                material="color: #0AA; opacity: 0.1; depthTest: false">
+                                <a-text  
+                                    id="micro-hud-text"
+                                    value="Amèlie Land"
+                                    position="0 0 0.01"
+                                    scale="1 1 1" 
+                                    align="center"
+                                    color="#000">
+                            </a-text>
+                        </a-plane>
+                </a-entity>
+                <!-- end of micro-HUD -->
+                <!-- Headlights... -->
+                <!-- <a-entity
+                            light="type: point;
+                            color: #00AAFF;
+                            intensity: 0.6;
+                            distance: 0;
+                            decay: 0;
+                            castShadow: true"
+                            position="-2 2.6 -2"></a-entity>
+                <a-entity
+                            light="type: point;
+                            color: #00AAFF;
+                            intensity: 0.6;
+                            distance: 0;
+                            decay: 0;
+                            castShadow: true"
+                            position="2 2.6 -2"></a-entity> -->
+                <a-entity raycaster="objects: .clickable;" cursor="rayOrigin: mouse" ></a-entity>
+                <a-entity
+					id="reticle"
+                    cursor="fuse:true;fuseTimeout:720;"
+                    raycaster="objects:.clickable; far:32;"
+                    geometry="primitive:ring;radiusInner: 0.01; radiusOuter: 0.03"
+                    material="shader:flat;color:#077;
+                                depthTest:true;
+                                transparent:false; opacity:0.4;"
+                    position="0 0 -1;"
+                    animation__fusing="property:scale;from:1 1 1;to:0 0 0;dur:720;startEvents:fusing;"
+                    animation__reset="property:scale;from:0 0 0;to: 1 1 1;dur:333;startEvents:mouseleave;"
+                ></a-entity></a-camera>
+            <!-- Sky color="#87CEEB"-->
+        <a-sky  color="#00BBFF" >  </a-sky>
+        <!-- Container entity that will rotate, creating day-night cycle -->
+        <!-- set X value of 'to:' to 360 to work. -->
+            <a-entity id="blinky"
+            animation="property: rotation;
+                        dur: 40000;
+                        easing: linear;
+                        loop: true;
+                        to: 360 0 0" >
+                        
+
+        <!-- Point light positioned away from the centre. -->
+        <!-- color: #FDB800; -->
+        <a-entity
+        light="type: point;
+            color: #FDB800;
+            intensity: 0.8;
+            distance: 0;
+            decay: 0;
+            castShadow: true"
+        position="0 0 -127">
+        <!-- Visual representation of the light source. -->
+        <!-- <a-sphere radius="20" 
+                material="color: #FDB813; 
+                            shader: flat;
+                            ">
+        </a-sphere> -->
+        </a-entity>
+        </a-entity>
+        <!-- Can place snow here, for example. -->
+        </a-entity>
+        
+        <!-- End of player entity. -->
+        </a-entity> 
+
+        <!-- Snee! -->
+        <a-entity id='klaus' position="36 100 -1026" snow-system="count: 90000; range: 40; height: 40; snowing: false"></a-entity>
+        <a-entity id='jack' snow-system="count: 90; range: 40; height: 40; snowing: true"></a-entity>
+
+        <!-- Terrain -->
+        <a-entity   terrain-generator 
+                    terrain-grass-generator 
+                    terrain-toadstool-generator
+                    terrain-forest-generator
+                    
+        ></a-entity>
+        <!-- terrain-plant-generator -->
+        <!-- terrain-forest-generator -->
+
+        <!-- Quest system -->
+        <a-entity quest-manager="questFile: quests.txt"></a-entity>
+        <a-obj-model    id="queenHead"
+                        src="#mQh" scale="3 3 3" 
+                        color="#0B1" 
+                        position="94 -30 69"
+                        >
+        </a-obj-model>
+        <a-entity  
+                id="queen"
+                gltf-model="#snowQstatue"
+                position="94 10 -1044"
+                scale="10 10 10"
+                >
+        </a-entity>
+
+        <!-- Here is where we load in obj models -->
+
+        <!-- Magical crystal Christmas tree. -->
+        <a-obj-model    src="#ent" scale="23 23 23"
+                        material="color: #088; opacity: 0.9; depthTest: true" 
+                        position="440 -32 -420"></a-obj-model>
+        <!-- Experimental nonsense. Hi mum! -->
+        <script defer src="glow-spheres.js"></script>
+        <a-entity   sphere-generator="interval: 500; maxSpheres: 32" 
+                    position="440 100 -400"></a-entity>
+
+        <!-- mobs! -->
+        <a-gltf-model   id="monty"
+                        src="#mArm" scale="3 3 3"
+                        material="shader:flat;"
+                        color="#B0B" 
+                        position="100 12 -18"
+                        ai-locomotion="height:0.6;speed:0.5;
+                        turnSpeed:0.6;
+                        aidrive:true;flee:false;target:#player"
+                        >
+        </a-gltf-model>
+        <!-- look-at="targetID:#player; rSpeed:0.8" -->
+        <a-gltf-model   id="baby"
+                        src="#mArm" scale="1 1 1" 
+                        color="#B0B" 
+                        position="100 12 -6"
+                        ai-locomotion="height:0.3;speed:0.3;aidrive:true;flee:false;target:#monty"
+                        >
+        </a-gltf-model>
+        <a-gltf-model    id="baby2"
+                        src="#mArm" scale="0.6 0.6 0.6" 
+                        color="#B0B" 
+                        position="-6 12 6"
+                        ai-locomotion="height:0.1;speed:0.45;aidrive:true;
+                        flee:false;target:#player;turnSpeed:0.3;"
+                        
+                        >
+        </a-gltf-model>
+        <!-- look-at="targetID:#player; rSpeed:0.8;flee:true;" -->
+
+        <a-obj-model    id="sniffler"
+                        src="#mSni" scale="4 4 4" 
+                        color="#EEB" 
+                        position="12 6 -19"
+                        material="src: #iQcode"
+                        ai-locomotion="height:6;speed:0.3;aidrive:true;flee:false;target:#baby2"
+                        >
+        </a-obj-model>
+
+        <a-entity 
+                    id="petite-hall"
+                    gltf-model="#great-hall"
+                    position ="0 0 0" 
+                    scale="1 1 1"
+                    rotation="0 0 0"></a-entity>
+
+        <script> 
+                
+                const hallHeight=-6.8;//getTerrainHeight(0,128);
+                document.querySelector("#petite-hall").setAttribute
+                    ('position',`88 ${hallHeight} 64`); 
+        </script>
+        <a-entity   sphere-generator="interval: 50; maxSpheres: 320; 
+                                        maxRadius: 0.4" 
+                    position="88 0 64"></a-entity>
+
+        <a-plane    src="#iQueen" 
+                    position="164 24 66" 
+                    scale="40 40 0"
+                    rotation="0 90 0"
+                    material="side: double"></a-plane>
+
+        <a-entity   gltf-model="#great-hall"
+                    position ="0 314 -1488" 
+                    scale="62 62 62"
+                    rotation="0 0 0"></a-entity>
+
+        <!-- Lighting -->
+        <a-light type="ambient" color="#888" intensity="0.6"></a-light> 
+        <!-- <a-light id="blinkyAmb" type="directional" position="1 1 1" color="#FFF" intensity="1"></a-light> -->
+    </a-scene>
+
+    <!-- HUD interactions for settings. NB before a-loco. -->
+    <script src="HUD_menu.js"></script>
+    <!-- Locomotion of player. -->
+    <script src='a-loco.js'></script>
+    <script src="q-markers.js"></script>
+    <script src="qman.js"></script>
+    <!-- <script src="n_urizen.js"></script> -->
+
+</body>
+</html>

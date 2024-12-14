@@ -1,0 +1,47 @@
+[Quest]
+id=1
+type=messageBoard
+x=88
+y=-22
+z=64
+itemType=crystal
+message=You have found \nThe Snow Quest.\nWhy has the snow\nstopped falling? \nFirst, look for the\n Great Tannenbaum!
+prerequisite=-1
+visible=true
+completed=false
+
+[Quest]
+id=2
+type=messageBoard
+x=500
+y=3
+z=-300
+itemType=none
+message=You'll find the\nancient ruins\n beyond the Great Tannenbaum.
+prerequisite=-1
+visible=true
+completed=false
+
+[Quest]
+id=3
+type=messageBoard
+x=333
+y=24
+z=-550
+itemType=key
+message=The ancient ruins are ahead!\nThe gift of snow\nis said to lie within.\nGood luck.
+prerequisite=-1
+visible=true
+completed=false
+
+[Quest]
+id=4
+type=messageBoard
+x=161
+y=14
+z=66
+itemType=none
+message=Snow Queen: where is my snow? \nIt falls no more.\nI hear whispers of a clue\n 'in the basement aqueous'? 
+prerequisite=-1
+visible=true
+completed=false
