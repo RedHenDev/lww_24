@@ -44,8 +44,10 @@
             <a-assset-item id="mXwing" src="./assets/xwing.glb"></a-assset-item>
             <a-assset-item id="mATAT" src="./assets/atat.glb"></a-assset-item>
             
-            <img crossorigin="anonymous" id="iQueen" src="./assets/snowQueen.png"></img>
-            <img crossorigin="anonymous" id="iQcode" src="./assets/aww_24.png"></img>
+            <img crossorigin="anonymous" id="i1" src="./assets/1.png"></img>
+            <img crossorigin="anonymous" id="i2" src="./assets/2.png"></img>
+            <img crossorigin="anonymous" id="i3" src="./assets/3.png"></img>
+            <img crossorigin="anonymous" id="i4" src="./assets/4.png"></img>
 
             <!-- <a-asset-item id="iArm" src="./assets/armadillo.png"></a-asset-item> -->
             <a-asset-item id="mArm" src="./assets/snowdillo.gltf"></a-asset-item>
@@ -106,7 +108,7 @@
                     animation__reset="property:scale;from:0 0 0;to: 1 1 1;dur:333;startEvents:mouseleave;"
                 ></a-entity></a-camera>
             <!-- Sky color="#87CEEB"-->
-        <a-sky  color="#00BBFF" >  </a-sky>
+        <a-sky  color="#000000" >  </a-sky>
         <!-- Container entity that will rotate, creating day-night cycle -->
         <!-- set X value of 'to:' to 360 to work. -->
             <a-entity id="blinky"
@@ -222,7 +224,7 @@
                         src="#mSni" scale="4 4 4" 
                         color="#EEB" 
                         position="12 6 -19"
-                        material="src: #iQcode"
+                        material="src: #1"
                         ai-locomotion="height:6;speed:0.3;aidrive:true;flee:false;target:#baby2"
                         >
         </a-obj-model>
@@ -231,8 +233,27 @@
                                         maxRadius: 0.4" 
                     position="88 0 64"></a-entity>
 
-        <a-plane    src="#iQueen" 
+        <a-plane    src="#i1" 
                     position="164 24 66" 
+                    scale="40 40 0"
+                    rotation="0 90 0"
+                    material="side: double"></a-plane>
+        
+        <a-plane    src="#i2" 
+                    position="-164 24 66" 
+                    scale="40 40 0"
+                    rotation="0 90 0"
+                    material="side: double"></a-plane>
+
+        <a-plane    
+                    src="#i3" 
+                    position="164 24 -66" 
+                    scale="40 40 0"
+                    rotation="0 90 0"
+                    material="side: double"></a-plane>
+        
+        <a-plane    src="#i4" 
+                    position="-164 24 -66" 
                     scale="40 40 0"
                     rotation="0 90 0"
                     material="side: double"></a-plane>
