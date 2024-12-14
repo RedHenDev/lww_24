@@ -212,7 +212,7 @@
 
             particles.forEach((p1, index) => {
                 // Update particle position in a circular motion
-                p1.angle += p1.speed;
+                p1.angle -= p1.speed;
                 p1.x = centerX + p1.radius * Math.cos(p1.angle);
                 p1.y = centerY + p1.radius * Math.sin(p1.angle);
                 p1.element.style.left = p1.x + 'px';
