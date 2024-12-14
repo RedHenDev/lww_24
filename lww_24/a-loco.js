@@ -12,8 +12,8 @@ AFRAME.registerComponent('terrain-movement', {
         this.monty=document.querySelector("#monty").object3D;
 
         // Quest management.
-        this.questManager=
-        document.querySelector('[quest-manager]').components['quest-manager'];
+        // this.questManager=
+        // document.querySelector('[quest-manager]').components['quest-manager'];
         
         this.fov=80;
         this.cam=document.querySelector("#cam").object3D;
@@ -85,8 +85,8 @@ AFRAME.registerComponent('terrain-movement', {
 
         // Quest updates. Should be handled by quest module, not here.
         //const questManager = document.querySelector('[quest-manager]').components['quest-manager'];
-        this.questManager.checkLocation(position.x, position.y, position.z);
-        this.questManager.checkPickup(position.x, position.y, position.z);
+        // this.questManager.checkLocation(position.x, position.y, position.z);
+        // this.questManager.checkPickup(position.x, position.y, position.z);
 
         // Camera controls testing, for VR (and mobile).
         //if(AFRAME.utils.device.isMobile()){
