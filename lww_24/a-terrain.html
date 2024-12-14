@@ -32,7 +32,7 @@
 </head>
 <body>
     <!-- fog="type: linear; color: #0AA; far:320;" -->
-    <a-scene fog="type: linear; color: #0AA; far:512;">
+    <a-scene fog="type: linear; color: #000; far:512;">
 
     <script src="thalassa.js"></script>
 
@@ -41,11 +41,9 @@
         <!-- Preload our assets, such as the Monster Truck :) -->
             <!-- <a-asset-item id="grave-digger" src="graveDigger.obj"></a-asset-item> -->
         
-            <a-asset-item id="great-hall" src="great_hall.glb"></a-asset-item>
-            <a-assset-item id="mQh" src="./assets/queenHead.obj"></a-assset-item>
-            <a-assset-item id="snowQstatue" src="./assets/queen.glb"></a-assset-item>
-            <a-asset-item id="ent" src="tree.obj"></a-asset-item>
-            <a-asset-item id="gbox" src="./assets/gift.obj"></a-asset-item>
+            <a-assset-item id="mXwing" src="./assets/xwing.glb"></a-assset-item>
+            <a-assset-item id="mATAT" src="./assets/atat.glb"></a-assset-item>
+            
             <img crossorigin="anonymous" id="iQueen" src="./assets/snowQueen.png"></img>
             <img crossorigin="anonymous" id="iQcode" src="./assets/aww_24.png"></img>
 
@@ -158,26 +156,33 @@
 
         <!-- Quest system -->
         <a-entity quest-manager="questFile: quests.txt"></a-entity>
-        <a-obj-model    id="queenHead"
-                        src="#mQh" scale="3 3 3" 
+        <a-entity       id="flight"
+                        gltf-model="#mXwing"
+                        scale="32 32 32" 
                         color="#0B1" 
-                        position="94 -30 69"
+                        position="0 32 -100"
+                        rotation="12 0 0"
                         >
-        </a-obj-model>
+        </a-entity>
         <a-entity  
-                id="queen"
-                gltf-model="#snowQstatue"
-                position="94 10 -1044"
-                scale="10 10 10"
+                id="ATAT"
+                gltf-model="#mATAT"
+                position="0 40 220"
+                scale="64 64 64"
+                rotation="0 42 0"
+                >
+        </a-entity>
+        <a-entity  
+                id="ATAT2"
+                gltf-model="#mATAT"
+                position="400 40 320"
+                scale="64 64 64"
+                rotation="0 -42 0"
                 >
         </a-entity>
 
         <!-- Here is where we load in obj models -->
 
-        <!-- Magical crystal Christmas tree. -->
-        <a-obj-model    src="#ent" scale="23 23 23"
-                        material="color: #088; opacity: 0.9; depthTest: true" 
-                        position="440 -32 -420"></a-obj-model>
         <!-- Experimental nonsense. Hi mum! -->
         <script defer src="glow-spheres.js"></script>
         <a-entity   sphere-generator="interval: 500; maxSpheres: 32" 
@@ -222,19 +227,6 @@
                         >
         </a-obj-model>
 
-        <a-entity 
-                    id="petite-hall"
-                    gltf-model="#great-hall"
-                    position ="0 0 0" 
-                    scale="1 1 1"
-                    rotation="0 0 0"></a-entity>
-
-        <script> 
-                
-                const hallHeight=-6.8;//getTerrainHeight(0,128);
-                document.querySelector("#petite-hall").setAttribute
-                    ('position',`88 ${hallHeight} 64`); 
-        </script>
         <a-entity   sphere-generator="interval: 50; maxSpheres: 320; 
                                         maxRadius: 0.4" 
                     position="88 0 64"></a-entity>
@@ -244,11 +236,6 @@
                     scale="40 40 0"
                     rotation="0 90 0"
                     material="side: double"></a-plane>
-
-        <a-entity   gltf-model="#great-hall"
-                    position ="0 314 -1488" 
-                    scale="62 62 62"
-                    rotation="0 0 0"></a-entity>
 
         <!-- Lighting -->
         <a-light type="ambient" color="#888" intensity="0.6"></a-light> 
